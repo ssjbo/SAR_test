@@ -4,12 +4,30 @@
 
 ## 1) 사전 준비
 
-실행 전에 **가상환경 세팅이 완료**되어 있어야 합니다.
+이 부분은 MSFA 깃허브가서 Installation 보고 가상환경 세팅 하기 ! 
+# change directory into the project main code
+cd MSFA
 
-- Python 가상환경(venv/conda) 활성화
-- `mmdet` 설치
-- `mmcv` 컴파일 확장 포함 버전 설치 필요 (`mmcv._ext` 누락 시 실행 불가)
-- `msfa` import 가능한 경로 확인 (기본값은 `SARDet_100K-main/SARDet_100K-main/MSFA`)
+# create env
+conda create -y -n MSFA python=3.8
+conda activate MSFA
+
+# install pytorch
+conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+# or 
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+
+# install dependencies of openmmlab
+pip install -U openmim
+mim install "mmengine==0.8.4"
+mim install "mmcv==2.0.1"
+mim install "mmdet==3.1.0"
+
+# install other dependencies
+pip install -r requirements.txt
+
+# install MSFA
+pip install -v -e .
 
 ## 2) 중요한 주의사항
 
